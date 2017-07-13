@@ -1,0 +1,70 @@
+/*html最大的根元素 css有继承能力 
+在他及body设置样式，作用于所有元素*/
+/*css重置，让浏览器做一张白纸*/
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+  font-size:  10px;
+  height: 100%;
+  background: url(1.jpg) bottom center;
+  /*webkit 浏览器前缀 css3是新知识，很多浏览器不支持*/
+  -webkit-background-size: cover;
+  /*移动端项目，下面的可以删 其他的不行*/
+  -ms-background-size:contain;
+  background-size:  cover;
+  background-repeat:  no-repeat;
+}
+body,html{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.keys{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*vh只跟屏幕有关 总共100份 比例分配*/
+    min-height: 100vh;
+}
+.key{
+    color: green;
+    border: .4rem solid #000;
+    /*rem vh css3的相对单位。
+    rem是relative html标签的font-size html里面设置
+    font-size:  10px 就是除以10
+    等比例换算关系，大小将于设备无关
+    iphone7s作为开发机型
+    px不靠谱，屏幕密度*/
+    -webkit-border-radius: .5rem;
+    border-radius: .5rem;
+    font-size: 1.5rem;
+    margin: 1rem;
+    padding: 1rem .5rem;
+    width: 10rem;
+    text-align: center;
+    background: rgba(0,0,0,.4);
+    /*水平 垂直偏移量 阴影的大小*/
+    text-shadow: 0 0 .5rem black;
+    /*个样式的变化自动添加渐变
+    all 支持的样式
+    .7s 时间
+    ease 改变的速度，快速运动 由慢到快*/
+    transition: all .07s ease;
+}
+.key div {
+    font-size: 4rem;
+}
+.key .sound{
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    color: #ffc600;
+}
+.playing{
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+    /*变形 放大>1 缩小<1*/
+    transform: scale(1.9);
+}
