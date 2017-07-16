@@ -4,48 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Location Base Service</title>
-    <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=Q0egtIGAAwudDgMNrV1fWIg0nUvrP8G5 "></script>
-    <style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
-    html, body{
-      height: 100%;
-    }
-    #map {
-        width: 100%;
-        height: 100%;
-    }
-    </style>
+    <title>this call apply</title>
 </head>
 <body>
-<div id="map">
-</div>
-<script>
-var map = new BMap.Map('map');
-map.centerAndZoom(
-    // 坐标点
-    new BMap.Point(116.404, 39.915),
-    11);
-map.addControl(new BMap.MapTypeControl());
-// map.setCurrentCity('北京');
-map.enableScrollWheelZoom(true);
-
-window.onload = function() {
-    // lbs 功能由window.navigator管制
-    // geolocation
-    navigator.geolocation.getCurrentPosition(showPosition);
-    function showPosition(position) {
-      map.centerAndZoom(
-          // 坐标点
-          new BMap.Point(position.coords.longitude, position.coords.latitude),
-          11);
-      // map.centerAndZoom(position.coords.longitude, position.coords.latitude, 11);
-      // alert(position.coords.longitude);
+    <div id="div1">我是一个div </div>
+    <script>
+        // 函数作为事件处理函数执行时,事件指向target
+        window.id='window';
+        document.getElementById('div1').onclick=function(){
+            alert(this.id);//div
+            var that=this;//保持对this 的引用 target
+            // var callback=function(){
+            //     alert(this.id);//window
+            //     // alert(that.id);
+            //     // this 被覆盖
+            //     // 处理函数内部有千丝万缕v的联系
+            //     // 希望this 指向target
+            // }
+            // // 普通调用方式 window
+            // this 就是event target
+            // 箭头函数内部的this 指向与父级相同
+            var callback=()=>{
+                alert(this.id);
+            }
+            callback();
+            // callback.call(this);//call手动指定函数内部 this 作用域
+        }
+    // 函数作为对象的方法调用 this 指向对像
+    // 作为普通函数  this  无路所指 window
+    window.name='globalName';
+    var getName=function(){
+        return this.name;
     }
-}
+    console.log(getName());//globalName
+    var myObj={
+        name:'sven',
+        getName:function(){
+            return this.name;
+        }
+    }
+    myObj.getName();//globalName
+    var globalName=myObj.globalName;
+    getName();
 </script>
 </body>
 </html>
